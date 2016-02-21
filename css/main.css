@@ -9,14 +9,12 @@ a * {
 }
 
 /* R4P3 Related Changes */
-#logo { height: 70px !important; }
-input {	background: rgb(7,7,7) !important; }
+#logo { height: 75px !important; }
 .Menu,.xenOverlay,.selected.navTab,.xenTooltip,.selectionControl.secondaryContent,.actionControl.sectionFooter { background: rgba(10,10,10,20) !important; }
 .button { background-color:rgba(6, 6, 6, 0.48) !important; }
 .staffOnline .secondaryContent h3::before { color:orange !important; }
 .membersOnline .secondaryContent h3::before { color:lightblue !important; }
 .userText .username { text-align:center !important; }
-.nodeInfo.forumNodeInfo.primaryContent.unread .nodeTitle a{ color:rgb(255,255,150) !important; }
 .node .nodeTitle a{ text-decoration:none !important; }
 .textLogo {	text-shadow:
 	0 0 2.5px #607069,
@@ -52,7 +50,6 @@ a[rel="#ff9999"]{background-color: rgb(255, 255, 255) !important;}
 a[rel="REPLACEME"]{REPLACEME !important;}*/
 
 .pollResult .barContainer { border:1px solid #e68c17 !important; }
-.bar { background:#f9d9b0 !important; }
 
 .section.infoBlock .secondaryContent center {
     width: 228px;
