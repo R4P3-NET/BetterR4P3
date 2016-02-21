@@ -47,6 +47,6 @@ r4p3.isNumber = function(str) {
 	}
 };
 //r4p3.addLink("href", "title");
-this.addLink = function(href, title) {
+r4p3.addLink = function(href, title) {
 	$('.Menu.JsOnly.tabMenu.membersTabLinks .secondaryContent.blockLinksList').append('<li><a href="'+href+'" target="_blank">'+title+'</a></li>');
 };
