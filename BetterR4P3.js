@@ -1,4 +1,4 @@
-function r4p3() {
+r4p3 = {
 	//r4p3.DisableLogging();
 	this.DisableLogging = function() {
 		console_log = console.log;
