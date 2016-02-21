@@ -37,6 +37,8 @@ a * {
 	color:black !important;
 	background:#e03030 !important;
 }
+iframe body { background:transparent !important; }
+iframe messages { background:transparent !important; }
 .moderationQueue .itemCount.alert {	color:red !important; }
 #ConversationsMenu_Counter .Total { color:yellow !important; }
 #AlertsMenu_Counter .Total { color:green !important; }
