@@ -39,6 +39,18 @@ r4p3_addBanner = function(username, bannercolor, bannertext, prepend) {
 r4p3_delBanner = function(username, bannercolor) {
 	$('li[data-author="'+username+'"] .userText .banner'+bannercolor).remove();
 };
+//r4p3_changeUserTitle("username", "title")
+r4p3_changeUserTitle = function(username, title) {
+    $('li a[href^="members/'+username.toLowerCase()+'."]').parent().find('.userTitle').text(title);
+};
+//r4p3_reorderStaffMember("useraname", prepend)
+r4p3_reorderStaffMember = function(username, prepend) {
+   if (prepend) {
+       $('.section.staffOnline li a[href^="members/'+username.toLowerCase()+'."].avatar').parent().prependTo( '.section.staffOnline .secondaryContent ul' );
+    } else {
+        $('.section.staffOnline li a[href^="members/'+username.toLowerCase()+'."].avatar').parent().appendTo( '.section.staffOnline .secondaryContent ul' );
+    }
+};
 
 (function() {
     'use strict';
@@ -46,8 +58,9 @@ r4p3_delBanner = function(username, bannercolor) {
     $( document ).ready(function() {
 		//$("head").append('<script id="BetterR4P3" src="https://rawgit.com/R4P3-NET/BetterR4P3/master/BetterR4P3.js"></script>');
         r4p3_addLink('https://discord.gg/0lNtGnKrr957kozq', 'R4P3 Discord');
-        r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');
-        r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);
+        r4p3_changeUserTitle('Bluscream', 'God');r4p3_changeUserTitle('Supervisor', 'Noob');
+        r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
+        r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
         $('form[action="account/preferences-save"]').livequery(function(){
             $('.ctrlUnit.submitUnit').before('\
 				<h3 class="sectionHeader">Appearance</h3>\
