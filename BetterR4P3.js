@@ -1,4 +1,4 @@
-function r4p3() { this.name = "BetterR4P3"; }
+function r4p3() {}
 //r4p3.log(dbg, "type", "pluginName", "msg");
 r4p3.log = function(dbg, type, pluginName, msg) {
 	if ( (dbg == "debug") || (dbg == "dbg") || (dbg == 1) ) {
