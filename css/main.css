@@ -15,42 +15,11 @@ a * {
 .membersOnline .secondaryContent h3::before { color:lightblue !important; }
 .userText .username { text-align:center !important; }
 .node .nodeTitle a{ text-decoration:none !important; }
-.textLogo {	text-shadow:
-	0 0 2.5px #607069,
-	0 0 5px #5D8070,
-	0 0 7.5px #5A8A75,
-	0 0 10px #54997B,
-	0 0 17px #52A883,
-	0 0 20px #4CBA8A,
-	0 0 25px #40C78C,
-	0 0 37px #2FDE91 !important; }
-.textLogo:hover { text-shadow:
-	0 0 2.5px #FFFFFF,
-	0 0 5px #CEEBF5,
-	0 0 7.5px #B4DFED,
-	0 0 10px #AADEF0,
-	0 0 17px #77D2F2,
-	0 0 20px #4DC6F0,
-	0 0 25px #259BC4,
-	0 0 37px #107091 !important; }
-.reportedItems .itemCount.alert {
-	color:black !important;
-	background:#e03030 !important;
-}
 iframe body { background:transparent !important; }
 iframe #messages { background:transparent !important; }
-.moderationQueue .itemCount.alert {	color:red !important; }
 #ConversationsMenu_Counter .Total { color:yellow !important; }
 #AlertsMenu_Counter .Total { color:green !important; }
-#ConversationsMenu_Counter .arrow,#AlertsMenu_Counter .arrow { display:none !important; }
-.itemCount { text-decoration:none !important; }
 
-/*.redactor_color_link { attr(style) !important; }*/
-/*a[rel="#ffffff"]{background-color: rgb(255, 255, 255) !important;}
-a[rel="#ff9999"]{background-color: rgb(255, 255, 255) !important;}
-a[rel="REPLACEME"]{REPLACEME !important;}*/
-
-.pollResult .barContainer { border:1px solid #e68c17 !important; }
 
 .section.infoBlock .secondaryContent center {
     width: 228px;
@@ -76,11 +45,6 @@ a[href="account/following"],a[href="members/"],
 span[style*="Transparent"], span[style*="transparent"], span[style*="TRANSPARENT"] {
 	background: #000000; color: #0EA0CC !important;
 }
-
-/* PERSONAL BULLSHIT :D */
-.visitorPanel a[href="members/bluscream.53/"].username.NoOverlay{
-	animation: pulse 15s infinite alternate !important; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important;
-}
 .bannertext {
     margin: 0 auto;
     overflow: hidden;
@@ -92,44 +56,6 @@ span[style*="Transparent"], span[style*="transparent"], span[style*="TRANSPARENT
     0%   { text-indent: 27.5em }
     100% { text-indent: -105em }
 }
-@keyframes rotation {
-    0%   {transform: rotate(360deg)}
-    100% {transform: rotate(-360deg);}
-}
-@keyframes downup {
-    0% {transform: rotateX(-360deg);}
-    100% {transform: rotateX(0deg);}
-}
-@keyframes updown {
-    0% {transform: rotateX(0deg);}
-    100% {transform: rotateX(-360deg);}
-}
-@keyframes pulse {
-      0% {color: white;}
-     25% {color: cyan;}
-     50% {color: blue;}
-     75% {color: cyan;}
-     100% {color: white;}
-}
-
-
-/* USER SETTINGS */
-
-/* start anonym_avatar_all */
-
-/* anonym_avatar_all end */
-
-/* start anonym_name_all */
-
-/* anonym_name_all end */
-
-/* start avatar_local */
-.visitorPanel a[class^="avatar "] img { content: url("https://i.gyazo.com/764a701bab7444add7b8ad87159c8ead.gif") !important; }
-/* avatar_local end */
-
-/* start unixtime */
-
-/* unixtime end */
 
 /* start names_team_color */
 a[href="members/bluscream.53/"].username:not(.visitorPanel) { color:cyan !important; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black !important; }
