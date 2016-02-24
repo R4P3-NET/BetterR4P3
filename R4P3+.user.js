@@ -60,8 +60,8 @@ r4p3_addDiscord = function(href) {
     r4p3_addinfoBlock('membersOnline versioninfo Discord', 'block', 'Discord', '<iframe src="'+href+'" width="230px" height="500px" frameborder="0"></iframe>');
 };
 //r4p3_addShoutbox();
-r4p3_addShoutbox = function() {
-    $('.mainContent').prepend('<iframe WIDTH="1106" HEIGHT="300" title="R4P3 Shoutbox" src="http://shoutbox.widget.me/window.html?uid=mca7tsw8" frameborder="0" scrolling="auto"></iframe>');
+r4p3_addShoutbox = function(src) {
+    $('.mainContent').prepend('<iframe WIDTH="1106" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe>');
 };
 //r4p3_addBanner("username", "bannercolor", "bannertext");
 r4p3_addBanner = function(username, bannercolor, bannertext, prepend) {
@@ -137,7 +137,7 @@ r4p3_getTSClients = function() {
                 r4p3_addDiscord("https://discordapp.com/widget?id=136825753957302272&theme=light");
             }
         }
-        r4p3_addShoutbox();
+        r4p3_addShoutbox('http://shoutbox.widget.me/window.html?uid=vms3ujlz');
         r4p3_changeUserTitle('Bluscream', 'God');r4p3_changeUserTitle('Supervisor', 'Noob');
         r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
         r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
