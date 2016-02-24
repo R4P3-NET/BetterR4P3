@@ -1,6 +1,5 @@
 // ==UserScript==
 // @name R4P3+
-// @namespace https://github.com/R4P3-NET/BetterR4P3
 // @description Better R4P3.net
 // @author Bluscream
 // @version 0.1
@@ -60,7 +59,7 @@ r4p3_addDiscord = function(href) {
 };
 //r4p3_addShoutbox();
 r4p3_addShoutbox = function(src) {
-    $('.mainContent').prepend('<iframe WIDTH="1106" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe>');
+    $('.mainContent').prepend('<p id="toggleshoutbox">Click to show/hide shoutbox<iframe id="shoutbox" WIDTH="1106" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></p>');
 };
 //r4p3_addBanner("username", "bannercolor", "bannertext");
 r4p3_addBanner = function(username, bannercolor, bannertext, prepend) {
@@ -113,9 +112,9 @@ r4p3_getTSClients = function() {
 (function() {
     'use strict';
     $( document ).ready(function() {
-        //$('head').append('<link rel="stylesheet" href="https://rawgit.com/R4P3-NET/BetterR4P3/master/css/main.css" type="text/css" />');
+        $('head').append('<link rel="stylesheet" href="https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/css/main.css" type="text/css" />');
         if (localStorage.getItem("theme") == 1) {
-            $('head').append('<link rel="stylesheet" href="https://rawgit.com/R4P3-NET/BetterR4P3/master/css/dark.css" type="text/css" />');
+            $('head').append('<link rel="stylesheet" href="https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/css/dark.css" type="text/css" />');
         }
         r4p3_addLink('https://discord.gg/0lNtGnKrr957kozq', 'R4P3 Discord');
         r4p3_getTSVersion();
@@ -137,6 +136,7 @@ r4p3_getTSClients = function() {
             }
         }
         r4p3_addShoutbox('https://www.freeshoutbox.net/bluscream&');
+        $("#toggleshoutbox").click(function(){$("#shoutbox").toggle();});
         r4p3_changeUserTitle('Bluscream', 'God');r4p3_changeUserTitle('Supervisor', 'Noob');
         r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
         r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
