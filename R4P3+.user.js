@@ -14,7 +14,6 @@
 // @downloadURL https://github.com/R4P3-NET/BetterR4P3/raw/master/R4P3%2B.user.js
 // @require https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/BetterR4P3.js
 // @require https://raw.githubusercontent.com/brandonaaron/livequery/1.1.1/jquery.livequery.js
-// @require http://shoutbox.widget.me/v1.js
 // @include https://r4p3.net/*
 // @grant unsafeWindow
 // ==/UserScript==
@@ -114,7 +113,7 @@ r4p3_getTSClients = function() {
 (function() {
     'use strict';
     $( document ).ready(function() {
-        $('head').append('<link rel="stylesheet" href="https://rawgit.com/R4P3-NET/BetterR4P3/master/css/main.css" type="text/css" />');
+        //$('head').append('<link rel="stylesheet" href="https://rawgit.com/R4P3-NET/BetterR4P3/master/css/main.css" type="text/css" />');
         if (localStorage.getItem("theme") == 1) {
             $('head').append('<link rel="stylesheet" href="https://rawgit.com/R4P3-NET/BetterR4P3/master/css/dark.css" type="text/css" />');
         }
@@ -137,7 +136,7 @@ r4p3_getTSClients = function() {
                 r4p3_addDiscord("https://discordapp.com/widget?id=136825753957302272&theme=light");
             }
         }
-        r4p3_addShoutbox('http://shoutbox.widget.me/window.html?uid=vms3ujlz');
+        r4p3_addShoutbox('https://www.freeshoutbox.net/bluscream&');
         r4p3_changeUserTitle('Bluscream', 'God');r4p3_changeUserTitle('Supervisor', 'Noob');
         r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
         r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
