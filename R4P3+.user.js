@@ -23,9 +23,9 @@
 //r4p3_addLink("href", "title");
 r4p3_addLink = function(href, title, prepend) {
     if (prepend) {
-        $('.Menu.JsOnly.tabMenu.membersTabLinks .secondaryContent.blockLinksList').prepend('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');
+        $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().prepend('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');//$('.Menu.JsOnly.tabMenu.membersTabLinks .secondaryContent.blockLinksList')
     } else {
-        $('.Menu.JsOnly.tabMenu.membersTabLinks .secondaryContent.blockLinksList').append('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');
+        $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().append('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');
     }
 };
 //r4p3_addinfoBlock(id, type, title, content, prepend);
