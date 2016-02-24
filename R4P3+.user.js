@@ -11,7 +11,6 @@
 // @contributionURL https://github.com/R4P3-NET/BetterR4P3/compare
 // @updateURL https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/R4P3%2B.user.js
 // @downloadURL https://github.com/R4P3-NET/BetterR4P3/raw/master/R4P3%2B.user.js
-// @require https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/BetterR4P3.js
 // @require https://raw.githubusercontent.com/brandonaaron/livequery/1.1.1/jquery.livequery.js
 // @include https://r4p3.net/*
 // @grant unsafeWindow
