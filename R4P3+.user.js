@@ -33,6 +33,8 @@ r4p3_addShoutbox = function(src) {
     setTimeout(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); }, 30000);
     $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
     //$("#refreshshoutbox").click(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); });
+    $('#shoutbox').contents().find('dattable').hide();
+    //window.frames['shoutbox'].document.getElementById("dattable").hide();
 };
 r4p3_checkShoutbox = function() {
     if($('#shoutbox').is(":visible")){
