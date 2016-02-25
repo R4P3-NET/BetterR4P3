@@ -245,6 +245,7 @@ r4p3_parsePosts = function(){
 
 (function() {
     'use strict';
+    //if([window.location.href].startsWith("https://")) { window.location.href = [window.location.href].replace("https://", "http://"); }
     $( document ).ready(function() {
         $('head').append('<link rel="stylesheet" href="https://rawgit.com/R4P3-NET/BetterR4P3/master/css/main.css" type="text/css" />');
         if (localStorage.getItem("theme") == 1) {
@@ -291,6 +292,6 @@ r4p3_parsePosts = function(){
                    });
                 });
             });
-        r4p3_likeAll();
+        r4p3_likeAll("Bluscream");
         });
 })();
