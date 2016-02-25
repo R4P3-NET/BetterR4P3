@@ -26,13 +26,13 @@ r4p3_addLink = function(href, title, prepend) {
         $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().append('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');
     }
 };
-//r4p3_addinfoBlock(id, type, title, content, prepend);
-r4p3_addinfoBlock = function(id, type, title, content, prepend) {
+//r4p3_addinfoBlock(id, type, title, titlehref, titledesc, content, prepend);
+r4p3_addinfoBlock = function(id, type, title, titlehref, titledesc, content, prepend) {
    if (prepend) {
 		$('.sidebar').prepend('\
 		<div class="section '+id+'">\
 			<div class="secondaryContent '+type+'">\
-				<h3>'+title+'</h3>\
+				<h3><a href="'+titlehref+'" title="'+titledesc+'">'+title+'</a></h3>\
 				<div>\
 					'+content+'\
 				</div>\
@@ -43,7 +43,7 @@ r4p3_addinfoBlock = function(id, type, title, content, prepend) {
 		$('.sidebar').append('\
 		<div class="section '+id+'">\
 			<div class="secondaryContent '+type+'">\
-				<h3>'+title+'</h3>\
+				<h3><a href="'+titlehref+'" title="'+titledesc+'">'+title+'</a></h3>\
 				<div>\
 					'+content+'\
 				</div>\
@@ -52,13 +52,26 @@ r4p3_addinfoBlock = function(id, type, title, content, prepend) {
 		');
     }
 };
-//r4p3_addDiscord(href);
-r4p3_addDiscord = function(href) {
-    r4p3_addinfoBlock('membersOnline versioninfo Discord', 'block', 'Discord', '<iframe src="'+href+'" width="230px" height="500px" frameborder="0"></iframe>');
+//r4p3_addDiscord(invite, href);
+r4p3_addDiscord = function(invite, href) {
+    r4p3_addLink('https://discord.gg/'+invite, 'R4P3 Discord');
+    r4p3_addinfoBlock('membersOnline versioninfo Discord', 'block', 'Discord', 'https://discord.gg/0lNtGnKrr957kozq', 'R4P3 Discord Server', '<iframe src="'+href+'" width="230px" height="500px" frameborder="0"></iframe>');
 };
 //r4p3_addShoutbox();
 r4p3_addShoutbox = function(src) {
-    $('.mainContent').prepend('<p id="toggleshoutbox">Click to show/hide shoutbox<iframe id="shoutbox" WIDTH="1106" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></p>');
+    $('.mainContent').prepend('<p id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="1106" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></p>');
+    if (localStorage.getItem("shoutbox") == 1) {  }
+    $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
+};
+r4p3_checkShoutbox = function() {
+    /*if($('#shoutbox').is(":visible")){
+        localStorage.setItem("shoutbox", 0);
+        $("#toggleshoutbox").text("Click to show shoutbox");
+    } else {
+        localStorage.setItem("shoutbox", 1);
+        $("#toggleshoutbox").text("Click to hide shoutbox");
+    }*/
+    $('.shoutbox').toggle();
 };
 //r4p3_addBanner("username", "bannercolor", "bannertext");
 r4p3_addBanner = function(username, bannercolor, bannertext, prepend) {
@@ -111,32 +124,22 @@ r4p3_getTSClients = function() {
 (function() {
     'use strict';
     $( document ).ready(function() {
-        $('head').append('<link rel="stylesheet" href="https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/css/main.css" type="text/css" />');
+        $('head').append('<link rel="stylesheet" href="https://rawgit.com/R4P3-NET/BetterR4P3/master/css/main.css" type="text/css" />');
         if (localStorage.getItem("theme") == 1) {
             $('head').append('<link rel="stylesheet" href="https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/css/dark.css" type="text/css" />');
         }
-        r4p3_addLink('https://discord.gg/0lNtGnKrr957kozq', 'R4P3 Discord');
         r4p3_getTSVersion();
-        r4p3_addinfoBlock('versioninfo JSON ver', 'statsList', 'Latest Teamspeak Versions', '\
+        r4p3_addinfoBlock('versioninfo JSON ver', 'statsList', 'Latest Teamspeak Versions', 'http://teamspeak.com/downloads', 'Check out the latest stable Teamspeak Versions', '\
               <left><span style="text-align:left;">Client: </span><a href="http://www.teamspeak.com/downloads#client" style="float:right"><b id="JSONclientver">Unknown</b></a><br>\
               <span style="text-align:left;">Server: </span><a href="http://www.teamspeak.com/downloads#server"style="float:right"><b id="JSONserverver">Unknown</b></a>\
         ');
         if (localStorage.getItem("theme") == 1) {
-            try {
-                r4p3_addDiscord("http://discordi.deliriousdrunkards.com/render?id=136825753957302272&theme=dark&join=true&abc=false&showall=false&toggle=false");
-            } catch(e) {
-                r4p3_addDiscord("https://discordapp.com/widget?id=136825753957302272&theme=dark");
-            }
+            r4p3_addDiscord("0lNtGnKrr957kozq", "https://discordapp.com/widget?id=136825753957302272&theme=dark");
         } else {
-            try {
-                r4p3_addDiscord("http://discordi.deliriousdrunkards.com/render?id=136825753957302272&theme=light&join=true&abc=false&showall=true&toggle=false");
-            } catch(e) {
-                r4p3_addDiscord("https://discordapp.com/widget?id=136825753957302272&theme=light");
-            }
+            r4p3_addDiscord("0lNtGnKrr957kozq", "https://discordapp.com/widget?id=136825753957302272&theme=light");
         }
         r4p3_addShoutbox('https://www.freeshoutbox.net/bluscream&');
-        $("#toggleshoutbox").click(function(){$("#shoutbox").toggle();});
-        r4p3_changeUserTitle('Bluscream', 'God');r4p3_changeUserTitle('Supervisor', 'Noob');
+        r4p3_changeUserTitle('Bluscream', 'Administrator');r4p3_changeUserTitle('Supervisor', 'Moderator');
         r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
         r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
         $('form[action="account/preferences-save"]').livequery(function(){
