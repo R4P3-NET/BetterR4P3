@@ -17,7 +17,7 @@ a * {
 iframe body { background:transparent !important; }
 iframe #messages { background:transparent !important; }
 #ConversationsMenu_Counter .Total { background:yellow !important; }
-#AlertsMenu_Counter .Total { background:green !important; }
+.itemCount#AlertsMenu_Counter { background:green !important; }
 span.itemCount.alert {
     color: red !important;
     background: #3C414B !important;
