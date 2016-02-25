@@ -65,7 +65,6 @@ a[href="members/bluscream.53/"].username:not(.visitorPanel) { color:cyan !import
 a[href="members/supervisor.10/"].username:not(.visitorPanel) { color:rgb(210, 61, 25) !important }
 a[href="members/asphyxia.1/"].username:not(.visitorPanel) { color:red !important }
 /* names_team_color end */
-}
 
 p#toggleshoutbox {
     cursor: pointer;
