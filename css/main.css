@@ -78,7 +78,7 @@ a[href="members/asphyxia.1/"].username:not(.visitorPanel) { color:red !important
 p#toggleshoutbox,#refreshshoutbox {
     cursor: pointer;
 }
-p#toggleshoutbox,#refreshshoutbox {
+p#toggleshoutbox {
     line-height: 30px;
     margin: auto;
     font-size: 16px;
@@ -89,3 +89,15 @@ p#toggleshoutbox,#refreshshoutbox {
     color: #ffffff;
     border-radius: 3px;
 }
+#refreshshoutbox {
+    line-height: 25px;
+    margin: auto;
+    font-size: 13px;
+    padding: 5px;
+    text-align: center;
+    background: #555;
+    border: solid 1px #666;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
