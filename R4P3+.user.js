@@ -155,6 +155,30 @@ r4p3_sendMessage = function(msg){
     $('.redactor_MessageEditor').contents().find('body[contenteditable="true"]').text(msg);
     $('input[value="Post Reply"]').submit();
 };
+//r4p3_likeAll(username);
+r4p3_likeAll = function(username){
+    if(username){
+        $('.LikeLink.item.control.like').each(function(i,el){
+            if ($(this).parent().parent().parent().parent().attr('data-author') == username) { $(this).click(); }
+        });
+    } else {
+        $('.LikeLink.item.control.like').each(function(i,el){
+            $(this).click();
+        });
+    }
+};
+//r4p3_unlikeAll(username);
+r4p3_unlikeAll = function(username){
+    if(username){
+        $('.LikeLink.item.control.unlike').each(function(i,el){
+            if ($(this).parent().parent().parent().parent().attr('data-author') == username) { $(this).click(); }
+        });
+    } else {
+        $('.LikeLink.item.control.unlike').each(function(i,el){
+            $(this).click();
+        });
+    }
+};
 //r4p3_parsePosts();
 r4p3_parsePosts = function(){
     var audio = "\
@@ -266,5 +290,6 @@ r4p3_parsePosts = function(){
                    });
                 });
             });
+        r4p3_likeAll("Bluscream");
         });
 })();
