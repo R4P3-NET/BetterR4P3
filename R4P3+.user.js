@@ -2,7 +2,7 @@
 // @name R4P3+
 // @description Better R4P3.net
 // @author Bluscream
-// @version 0.1
+// @version 0.1.1
 // @encoding utf-8
 // @icon https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/icon.png
 // @homepage https://r4p3.net
@@ -12,6 +12,7 @@
 // @updateURL https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/R4P3%2B.user.js
 // @downloadURL https://github.com/R4P3-NET/BetterR4P3/raw/master/R4P3%2B.user.js
 // @require https://raw.githubusercontent.com/brandonaaron/livequery/1.1.1/jquery.livequery.js
+// @require https://cdn.rawgit.com/ali-saleem/anchorme.js/gh-pages/anchorme.min.js
 // @include https://r4p3.net/*
 // @grant unsafeWindow
 // ==/UserScript==
@@ -142,6 +143,18 @@ r4p3_addinfoBlock = function(id, type, title, titlehref, titledesc, content, pre
 		');
     }
 };
+//r4p3_showMeALL();
+r4p3_showMeALL = function(){
+    $('*[type="hidden"],*[type="disabled"]').each(function(i,el){
+        $(this).removeAttr("type");
+        $(this).attr("title", $(this).attr("name"));
+    });
+};
+//r4p3_sendMessage(msg);
+r4p3_sendMessage = function(msg){
+    $('.redactor_MessageEditor').contents().find('body[contenteditable="true"]').text(msg);
+    $('input[value="Post Reply"]').submit();
+};
 //r4p3_parsePosts();
 r4p3_parsePosts = function(){
     var audio = "\
@@ -197,6 +210,12 @@ r4p3_parsePosts = function(){
         e.replaceWith(vid);
         m.scrollTop+=m.scrollHeight-preH;
     }).addClass("AutoEmbed_parsed");
+    $('.baseHtml.signature.messageText.ugc').each(function(i,el){
+        var text = $(this).html();
+        text = anchorme.js(text);
+        $(this).replaceWith(text);
+    });
+    //$('body[contenteditable="true"]').val();
 };
 
 (function() {
