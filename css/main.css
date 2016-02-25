@@ -16,7 +16,12 @@ a * {
 .node .nodeTitle a{ text-decoration:none !important; }
 iframe body { background:transparent !important; }
 iframe #messages { background:transparent !important; }
-#ConversationsMenu_Counter .Total { color:yellow !important; }
+#ConversationsMenu_Counter .Total { background:yellow !important; }
+#AlertsMenu_Counter .Total { background:green !important; }
+span.itemCount.alert {
+    color: red !important;
+    background: #3C414B !important;
+}
 
 
 .section.infoBlock .secondaryContent center {
