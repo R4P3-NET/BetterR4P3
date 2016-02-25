@@ -16,9 +16,9 @@ a * {
 .node .nodeTitle a{ text-decoration:none !important; }
 iframe body { background:transparent !important; }
 iframe #messages { background:transparent !important; }
-#ConversationsMenu_Counter.itemCount { /*background:yellow !important;*/ }
-#AlertsMenu_Counter.itemCount { /*background:green !important;*/ }
- .itemCount.alert .moderationQueue.modLink {
+/*#ConversationsMenu_Counter.itemCount { background:yellow !important; }
+#AlertsMenu_Counter.itemCount { background:green !important; }*/
+.moderationQueue.modLink .itemCount.alert {
     color: red !important;
     background: #3C414B !important;
 }
