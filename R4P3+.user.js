@@ -59,18 +59,18 @@ r4p3_addDiscord = function(invite, href) {
 };
 //r4p3_addShoutbox();
 r4p3_addShoutbox = function(src) {
-    $('.mainContent').prepend('<p id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="1106" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></p>');
-    if (localStorage.getItem("shoutbox") == 1) {  }
+    $('.mainContent').prepend('<p id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></p>');
+    if (localStorage.getItem("shoutbox") == '0') { $("#shoutbox").hide(); }
     $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
 };
 r4p3_checkShoutbox = function() {
-    /*if($('#shoutbox').is(":visible")){
-        localStorage.setItem("shoutbox", 0);
-        $("#toggleshoutbox").text("Click to show shoutbox");
+    if($('#shoutbox').is(":visible")){
+        localStorage.setItem("shoutbox", '0');
+        //$("#toggleshoutbox").text("Click to show shoutbox");
     } else {
-        localStorage.setItem("shoutbox", 1);
-        $("#toggleshoutbox").text("Click to hide shoutbox");
-    }*/
+        localStorage.setItem("shoutbox", '1');
+        //$("#toggleshoutbox").text("Click to hide shoutbox");
+    }
     $('.shoutbox').toggle();
 };
 //r4p3_addBanner("username", "bannercolor", "bannertext");
