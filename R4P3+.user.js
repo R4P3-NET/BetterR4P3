@@ -31,10 +31,11 @@ r4p3_addShoutbox = function(src) {
     $('.breadBoxTop').before('<div id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></div>');//<div class="noselect" id="refreshshoutbox" class="refreshshoutbox">Refresh Shoutbox</div><
     if (localStorage.getItem("shoutbox") == '0') { $("#shoutbox").hide(); }
     setTimeout(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); }, 30000);
+    setTimeout(function(){ r4p3_adlessShoutbox();console.log('removed ads'); }, 1000);
     $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
     //$("#refreshshoutbox").click(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); });
-    $('#shoutbox').contents().find('#dattable').remove();
 };
+//r4p3_checkShoutbox();
 r4p3_checkShoutbox = function() {
     if($('#shoutbox').is(":visible")){
         localStorage.setItem("shoutbox", '0');
@@ -42,9 +43,14 @@ r4p3_checkShoutbox = function() {
     } else {
         localStorage.setItem("shoutbox", '1');
         $('#shoutbox').attr('src', $('#shoutbox').attr('src'));
+        setTimeout(function(){ r4p3_adlessShoutbox();console.log('removed ads'); }, 1000);
         //$("#toggleshoutbox").text("Click to hide shoutbox");
     }
     $('.shoutbox').toggle();
+};
+//r4p3_adlessShoutbox();
+r4p3_adlessShoutbox = function() {
+    $('#shoutbox').contents().find('#dattable').remove();
 };
 //r4p3_addBanner("username", "bannercolor", "bannertext");
 r4p3_addBanner = function(username, bannercolor, bannertext, prepend) {
@@ -292,6 +298,6 @@ r4p3_parsePosts = function(){
                    });
                 });
             });
-        r4p3_likeAll("Bluscream");
+        r4p3_likeAll();
         });
 })();
