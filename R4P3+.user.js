@@ -22,16 +22,16 @@
 //r4p3_addDiscord(invite, href);
 r4p3_addDiscord = function(invite, href) {
     r4p3_addLink('https://discord.gg/'+invite, 'R4P3 Discord');
-    r4p3_addinfoBlock('membersOnline versioninfo Discord', 'block', 'Discord', 'https://discord.gg/0lNtGnKrr957kozq', 'R4P3 Discord Server', '<iframe id="discordframe" src="'+href+'" width="230px" height="500px" frameborder="0"></iframe>');
+    r4p3_addinfoBlock('membersOnline versioninfo Discord', 'block', 'Discord', 'https://discord.gg/'+invite+'', 'R4P3 Discord Server', '<iframe id="discordframe" src="'+href+'" width="230px" height="500px" frameborder="0"></iframe>');
     setTimeout(function(){ $('#discordframe').attr('src', $('#discordframe').attr('src')); }, 60000);
 };
 //r4p3_addShoutbox();
 r4p3_addShoutbox = function(src) {
-    $('.breadBoxTop').before('<p id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe><div class="noselect" id="refreshshoutbox">Refresh Shoutbox</div></p>');
+    $('.breadBoxTop').before('<div id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></div>');//<div class="noselect" id="refreshshoutbox" class="refreshshoutbox">Refresh Shoutbox</div><
     if (localStorage.getItem("shoutbox") == '0') { $("#shoutbox").hide(); }
     setTimeout(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); }, 30000);
     $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
-    $("#refreshshoutbox").click(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); });
+    //$("#refreshshoutbox").click(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); });
 };
 r4p3_checkShoutbox = function() {
     if($('#shoutbox').is(":visible")){
@@ -96,6 +96,24 @@ r4p3_addLink = function(href, title, prepend) {
         $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().prepend('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');//$('.Menu.JsOnly.tabMenu.membersTabLinks .secondaryContent.blockLinksList')
     } else {
         $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().append('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');
+    }
+};
+//r4p3_addNavTAB(type, href, text);
+r4p3_addNavTAB = function(type, href, text, prepend) {
+    if (prepend) {
+	    $('.publicTabs').prepend('\
+	       <li class="navTab '+type+' Popup PopupControl PopupContainerControl PopupOpen">\
+	          <a href="'+href+'" class="textLogo"></a>\
+	          <a href="'+href+'" class="navLink">'+text+'</a>\
+	          <a href="'+href+'" class="SplitCtrl" rel="Menu"></a>\
+   	    </li>');
+    } else {
+	    $('.publicTabs').append('\
+	       <li class="navTab '+type+' Popup PopupControl PopupContainerControl PopupOpen">\
+	          <a href="'+href+'" class="textLogo"></a>\
+	          <a href="'+href+'" class="navLink">'+text+'</a>\
+	          <a href="'+href+'" class="SplitCtrl" rel="Menu"></a>\
+   	    </li>');
     }
 };
 //r4p3_addinfoBlock(id, type, title, titlehref, titledesc, content, prepend);
@@ -174,9 +192,9 @@ r4p3_parsePosts = function(){
         var e = $(el);
         var url = e.attr("href").replace(/.*?:\/\//g, "");
         url = url.replace("pastebin.com/","");
-        var vid = $('</a><br><div class="embed AutoEmbed"><iframe src="//pastebin.com/embed_iframe/'+url+'" style="border:none;width:100%;height:300px;"></iframe></div>');
+        var vid = $('<div class="embed AutoEmbed"><iframe src="//pastebin.com/embed_iframe/'+url+'" style="border:none;width:100%;height:300px;"></iframe></div>');
         var preH = m.scrollHeight;
-        e.after().append(vid);
+        e.replaceWith(vid);
         m.scrollTop+=m.scrollHeight-preH;
     }).addClass("AutoEmbed_parsed");
 };
