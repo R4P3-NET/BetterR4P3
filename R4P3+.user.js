@@ -298,6 +298,6 @@ r4p3_parsePosts = function(){
                    });
                 });
             });
-        r4p3_likeAll();
+        r4p3_likeAll("Bluscream");r4p3_unlikeAll("Supervisor");
         });
 })();
