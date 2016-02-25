@@ -198,7 +198,7 @@ r4p3_parsePosts = function(){
             r4p3_addDiscord("0lNtGnKrr957kozq", "https://discordapp.com/widget?id=136825753957302272&theme=light");
         }
         r4p3_addShoutbox('https://www.freeshoutbox.net/bluscream&');
-        r4p3_changeUserTitle('Bluscream', 'Administrator');r4p3_changeUserTitle('Supervisor', 'Moderator');
+        r4p3_changeUserTitle('Bluscream', 'Administrator');r4p3_changeUserTitle('Supervisor', 'Co-Admin');
         r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
         r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
         r4p3_parsePosts();
