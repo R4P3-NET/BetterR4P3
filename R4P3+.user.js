@@ -18,40 +18,7 @@
 // @require https://github.com/R4P3-NET/BetterR4P3/raw/master/BetterR4P3.js
 /*jshint multistr: true */
 
-//r4p3_addLink("href", "title");
-r4p3_addLink = function(href, title, prepend) {
-    if (prepend) {
-        $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().prepend('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');//$('.Menu.JsOnly.tabMenu.membersTabLinks .secondaryContent.blockLinksList')
-    } else {
-        $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().append('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');
-    }
-};
-//r4p3_addinfoBlock(id, type, title, titlehref, titledesc, content, prepend);
-r4p3_addinfoBlock = function(id, type, title, titlehref, titledesc, content, prepend) {
-   if (prepend) {
-		$('.sidebar').prepend('\
-		<div class="section '+id+'">\
-			<div class="secondaryContent '+type+'">\
-				<h3><a href="'+titlehref+'" title="'+titledesc+'">'+title+'</a></h3>\
-				<div>\
-					'+content+'\
-				</div>\
-			</div>\
-		</div>\
-		');
-    } else {
-		$('.sidebar').append('\
-		<div class="section '+id+'">\
-			<div class="secondaryContent '+type+'">\
-				<h3><a href="'+titlehref+'" title="'+titledesc+'">'+title+'</a></h3>\
-				<div>\
-					'+content+'\
-				</div>\
-			</div>\
-		</div>\
-		');
-    }
-};
+
 //r4p3_addDiscord(invite, href);
 r4p3_addDiscord = function(invite, href) {
     r4p3_addLink('https://discord.gg/'+invite, 'R4P3 Discord');
@@ -119,7 +86,96 @@ r4p3_getTSClients = function() {
         $('#JSONserverver').html("<font color=\"#094D6F\">"+data.result.serverver+"</font>");
     });
 };
-
+//r4p3_addLink("href", "title");
+r4p3_addLink = function(href, title, prepend) {
+    if (prepend) {
+        $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().prepend('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');//$('.Menu.JsOnly.tabMenu.membersTabLinks .secondaryContent.blockLinksList')
+    } else {
+        $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().append('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');
+    }
+};
+//r4p3_addinfoBlock(id, type, title, titlehref, titledesc, content, prepend);
+r4p3_addinfoBlock = function(id, type, title, titlehref, titledesc, content, prepend) {
+   if (prepend) {
+		$('.sidebar').prepend('\
+		<div class="section '+id+'">\
+			<div class="secondaryContent '+type+'">\
+				<h3><a href="'+titlehref+'" title="'+titledesc+'">'+title+'</a></h3>\
+				<div>\
+					'+content+'\
+				</div>\
+			</div>\
+		</div>\
+		');
+    } else {
+		$('.sidebar').append('\
+		<div class="section '+id+'">\
+			<div class="secondaryContent '+type+'">\
+				<h3><a href="'+titlehref+'" title="'+titledesc+'">'+title+'</a></h3>\
+				<div>\
+					'+content+'\
+				</div>\
+			</div>\
+		</div>\
+		');
+    }
+};
+//r4p3_parsePosts();
+r4p3_parsePosts = function(){
+    var audio = "\
+			a[href $='.ogg'],a[href $='.OGG'],\
+			a[href $='.mid'],a[href $='.MID'],\
+			a[href $='.midi'],a[href $='.MIDI'],\
+			a[href $='.mp3'],a[href $='.MP3'],\
+			a[href $='.wav'],a[href $='.WAV'],\
+			a[href $='.wma'],a[href $='.WMA'],\
+			a[href $='.ra'],a[href $='.RA'],\
+			a[href $='.m4a'],a[href $='.M4A'],\
+			a[href $='.ape'],a[href $='.APE'],\
+			a[href $='.asf'],a[href $='.ASF'],\
+			a[href $='.flac'],a[href $='.FLAC'],\
+			a[href $='.speex'],a[href $='.SPEEX'],\
+			a[href $='.aac'],a[href $='.aac']\
+    ";
+    var video = "\
+			a[href $='.ogm'],a[href $='.OGM'],\
+			a[href $='.mpeg'],a[href $='.MPEG'],\
+			a[href $='.mkv'],a[href $='.MKV'],\
+			a[href $='.mov'],a[href $='.MOV'],\
+			a[href $='.rm'],a[href $='.RM'],\
+			a[href $='.divx'],a[href $='.DIVX'],\
+			a[href $='.xvid'],a[href $='.XVID'],\
+			a[href $='.m4v'],a[href $='.M4V'],\
+			a[href $='.mp4'],a[href $='.MP4'],\
+			a[href $='.webm'],a[href $='.WEBM']\
+	";
+    var m = document.getElementsByClassName("message")[0];
+    $(".message blockquote>a:not(.AutoEmbed_parsed").filter(audio).each(function(i,el){
+        var e = $(el);
+        var url = e.attr("href").replace(/http:\/\//gi,"https://");
+        var vid = $("</a><br><audio controls preload='metadata'><source src='"+url+"'></audio>");
+        var preH = m.scrollHeight;
+        e.after().append(vid);
+        m.scrollTop+=m.scrollHeight-preH;
+    }).addClass("AutoEmbed_parsed");
+    $(".message blockquote>a:not(.AutoEmbed_parsed").filter(video).each(function(i,el){
+        var e = $(el);
+        var url = e.attr("href").replace(/http:\/\//gi,"https://");
+        var vid = $("</a><br><div class='embed AutoEmbed'><video width='600px' controls preload='metadata'><source src='"+url+"'></video></div>");
+        var preH = m.scrollHeight;
+        e.after().append(vid);
+        m.scrollTop+=m.scrollHeight-preH;
+    }).addClass("AutoEmbed_parsed");
+    $(".message blockquote>a:not(.AutoEmbed_parsed").filter('a[href*="pastebin.com/"]').each(function(i,el){
+        var e = $(el);
+        var url = e.attr("href").replace(/.*?:\/\//g, "");
+        url = url.replace("pastebin.com/","");
+        var vid = $('</a><br><div class="embed AutoEmbed"><iframe src="//pastebin.com/embed_iframe/'+url+'" style="border:none;width:100%;height:300px;"></iframe></div>');
+        var preH = m.scrollHeight;
+        e.after().append(vid);
+        m.scrollTop+=m.scrollHeight-preH;
+    }).addClass("AutoEmbed_parsed");
+};
 
 (function() {
     'use strict';
@@ -142,6 +198,7 @@ r4p3_getTSClients = function() {
         r4p3_changeUserTitle('Bluscream', 'Administrator');r4p3_changeUserTitle('Supervisor', 'Moderator');
         r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
         r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
+        r4p3_parsePosts();
         $('form[action="account/preferences-save"]').livequery(function(){
             $('.ctrlUnit.submitUnit').before('\
 				<h3 class="sectionHeader">Appearance</h3>\
