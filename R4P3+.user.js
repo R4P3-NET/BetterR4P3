@@ -22,11 +22,12 @@
 //r4p3_addDiscord(invite, href);
 r4p3_addDiscord = function(invite, href) {
     r4p3_addLink('https://discord.gg/'+invite, 'R4P3 Discord');
-    r4p3_addinfoBlock('membersOnline versioninfo Discord', 'block', 'Discord', 'https://discord.gg/0lNtGnKrr957kozq', 'R4P3 Discord Server', '<iframe src="'+href+'" width="230px" height="500px" frameborder="0"></iframe>');
+    r4p3_addinfoBlock('membersOnline versioninfo Discord', 'block', 'Discord', 'https://discord.gg/0lNtGnKrr957kozq', 'R4P3 Discord Server', '<iframe id="discordframe" src="'+href+'" width="230px" height="500px" frameborder="0"></iframe>');
+    setTimeout(function(){ $('#discordframe').attr('src', $('#discordframe').attr('src')); }, 60000);
 };
 //r4p3_addShoutbox();
 r4p3_addShoutbox = function(src) {
-    $('.breadBoxTop').before('<p id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></p>');
+    $('.breadBoxTop').before('<p id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></p>');
     if (localStorage.getItem("shoutbox") == '0') { $("#shoutbox").hide(); }
     $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
     setTimeout(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); }, 30000);
