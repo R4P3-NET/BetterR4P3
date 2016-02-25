@@ -38,6 +38,7 @@ r4p3_checkShoutbox = function() {
         //$("#toggleshoutbox").text("Click to show shoutbox");
     } else {
         localStorage.setItem("shoutbox", '1');
+        $('#shoutbox').attr('src', $('#shoutbox').attr('src'));
         //$("#toggleshoutbox").text("Click to hide shoutbox");
     }
     $('.shoutbox').toggle();
