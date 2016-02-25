@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name R4P3+
-// @description Better R4P3.net
+// @description Better R4P3.net (To remove shoutbox ads use " --disable-web-security" on Chrome
 // @author Bluscream
 // @version 0.1.1
 // @encoding utf-8
@@ -33,8 +33,7 @@ r4p3_addShoutbox = function(src) {
     setTimeout(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); }, 30000);
     $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
     //$("#refreshshoutbox").click(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); });
-    $('#shoutbox').contents().find('dattable').hide();
-    //window.frames['shoutbox'].document.getElementById("dattable").hide();
+    $('#shoutbox').contents().find('#dattable').remove();
 };
 r4p3_checkShoutbox = function() {
     if($('#shoutbox').is(":visible")){
@@ -292,6 +291,6 @@ r4p3_parsePosts = function(){
                    });
                 });
             });
-        r4p3_likeAll("Bluscream");
+        r4p3_likeAll();
         });
 })();
