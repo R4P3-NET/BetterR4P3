@@ -29,6 +29,7 @@ r4p3_addShoutbox = function(src) {
     $('.breadBoxTop').before('<p id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></p>');
     if (localStorage.getItem("shoutbox") == '0') { $("#shoutbox").hide(); }
     $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
+    setTimeout(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src')); }, 30000);
 };
 r4p3_checkShoutbox = function() {
     if($('#shoutbox').is(":visible")){
@@ -36,7 +37,7 @@ r4p3_checkShoutbox = function() {
         //$("#toggleshoutbox").text("Click to show shoutbox");
     } else {
         localStorage.setItem("shoutbox", '1');
-        $('#shoutbox').attr('src', $('#shoutbox').attr('src'));
+        //$('#shoutbox').attr('src', $('#shoutbox').attr('src'));
         //$("#toggleshoutbox").text("Click to hide shoutbox");
     }
     $('.shoutbox').toggle();
