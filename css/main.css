@@ -75,10 +75,8 @@ a[href="members/supervisor.10/"].username:not(.visitorPanel) { color:rgb(210, 61
 a[href="members/asphyxia.1/"].username:not(.visitorPanel) { color:red !important }
 /* names_team_color end */
 
-#toggleshoutbox,#refreshshoutbox {
-    cursor: pointer;
-}
 #toggleshoutbox {
+    cursor: pointer;
     line-height: 25px;
     margin: auto;
     font-size: 12px;
@@ -86,18 +84,6 @@ a[href="members/asphyxia.1/"].username:not(.visitorPanel) { color:red !important
     text-align: center;
     background: #EDEEF1;
     border: solid 1px #666;
-    color: #bbbbbb;
+    color: #BBBBBB;
     border-radius: 3px;
 }
-#refreshshoutbox {
-    line-height: 25px;
-    margin: auto;
-    font-size: 13px;
-    padding: 5px;
-    text-align: center;
-    background: #555;
-    border: solid 1px #666;
-    color: #ffffff;
-    border-radius: 3px;
-}
-
