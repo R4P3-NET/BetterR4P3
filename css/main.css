@@ -70,7 +70,7 @@ span[style*="Transparent"], span[style*="transparent"], span[style*="TRANSPARENT
 }
 
 /* start names_team_color */
-a[href="members/bluscream.53/"].username:not(.visitorPanel) { color:cyan !important }
+a[href="members/bluscream.53/"].username:not(.visitorPanel) { color:#005AFF !important }
 a[href="members/supervisor.10/"].username:not(.visitorPanel) { color:rgb(210, 61, 25) !important }
 a[href="members/asphyxia.1/"].username:not(.visitorPanel) { color:red !important }
 /* names_team_color end */
