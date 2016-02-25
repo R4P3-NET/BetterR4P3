@@ -16,8 +16,8 @@ a * {
 .node .nodeTitle a{ text-decoration:none !important; }
 iframe body { background:transparent !important; }
 iframe #messages { background:transparent !important; }
-#ConversationsMenu_Counter.itemCount { background:yellow !important; }
-#AlertsMenu_Counter.itemCount { background:green !important; }
+#ConversationsMenu_Counter.itemCount { /*background:yellow !important;*/ }
+#AlertsMenu_Counter.itemCount { /*background:green !important;*/ }
 span.itemCount.alert {
     color: red !important;
     background: #3C414B !important;
