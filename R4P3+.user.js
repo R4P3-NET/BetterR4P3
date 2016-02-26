@@ -192,8 +192,8 @@ r4p3_showMeALL = function(){
         $(this).attr("title", $(this).attr("name"));
     });
 };
-//r4p3_sendMessage(msg);
-r4p3_sendMessage = function(msg){
+//r4p3_sendReply(msg);
+r4p3_sendReply = function(msg){
     $('.redactor_MessageEditor').contents().find('body[contenteditable="true"]').text(msg);
     $('input[value="Post Reply"]').submit();
 };
