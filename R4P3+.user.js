@@ -221,6 +221,12 @@ r4p3_unlikeAll = function(username){
         });
     }
 };
+//r4p3_toggleAllSpoilers();
+r4p3_toggleAllSpoilers = function(){
+    $('.button.ToggleTrigger').each(function(i,el){
+        $(this).click();
+    });
+};
 //r4p3_parsePosts();
 r4p3_parsePosts = function(){
     var audio = "\
@@ -333,6 +339,6 @@ r4p3_parsePosts = function(){
                    });
                 });
             });
-        r4p3_likeAll("Bluscream");r4p3_unlikeAll("Supervisor");
+        r4p3_likeAll();r4p3_unlikeAll("Supervisor");
         });
 })();
