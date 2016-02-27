@@ -273,7 +273,7 @@ r4p3_parsePosts = function(){
         e.after().append(vid);
         m.scrollTop+=m.scrollHeight-preH;
     }).addClass("AutoEmbed_parsed");
-    $(".message blockquote>a:not(.AutoEmbed_parsed").filter('a[href*="pastebin.com/"]').each(function(i,el){
+    /*$(".message blockquote>a:not(.AutoEmbed_parsed").filter('a[href*="pastebin.com/"]').each(function(i,el){
         var e = $(el);
         var url = e.attr("href").replace(/.*?:\/\//g, "");
         url = url.replace("pastebin.com/","");
@@ -286,7 +286,7 @@ r4p3_parsePosts = function(){
         var text = $(this).html();
         text = anchorme.js(text);
         $(this).replaceWith(text);
-    });
+    });*/
     //$('body[contenteditable="true"]').val();
 };
 
