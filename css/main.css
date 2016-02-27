@@ -87,6 +87,3 @@ a[href="members/asphyxia.1/"].username:not(.visitorPanel) { color:red !important
     color: #BBBBBB;
     border-radius: 3px;
 }
-html .redactor_toolbar li a.redactor_btn_presets {
-    background-position: 3px -1243px;
-}
