@@ -2,7 +2,7 @@
 // @name R4P3+
 // @description Better R4P3.net
 // @author Bluscream
-// @version 1.3
+// @version 1.4
 // @encoding utf-8
 // @icon https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/icon.png
 // @homepage https://r4p3.net
@@ -185,6 +185,22 @@ r4p3_addForumNODE = function(clas, id, title, titlehref, content, prepend){
         ');
     }
 };
+//r4p3_addToolbarITEM(clas, title, content);
+r4p3_addToolbarITEM = function(clas, title, image, content){
+	$('.redactor_toolbar').append('\
+		<li class="redactor_btn_group">\
+		    <ul>\
+		        <li class="redactor_btn_container_'+clas+'">\
+		            <a href="javascript:void(null);" title="'+title+'" class="redactor_btn_'+clas+'" style="background:'+image+'" unselectable="on" tabindex="-1"></a>\
+		        </li>\
+		    </ul>\
+		</li>\
+	');
+    if(content) {
+        $('.redactor_toolbar').after('<div class="redactor_dropdown '+clas+'" style="display:none;">'+content+'</div>');//.redactor_dropdown:last
+        $('.redactor_btn_presets').click( function(){ $('.redactor_dropdown.'+clas).toggle(); });
+    }
+};
 //r4p3_showMeALL();
 r4p3_showMeALL = function(){
     $('*[type="hidden"],*[type="disabled"]').each(function(i,el){
@@ -313,6 +329,13 @@ r4p3_parsePosts = function(){
         r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
         r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
         r4p3_parsePosts();
+        r4p3_addToolbarITEM('presets', 'Presets',
+            "url('data:image/gif;base64,R0lGODlhEAAQANUiANOcNun6/9nw+4aYqz+m//zok+7IbqCfn/n7//v//3OTpO/7/ABVlpyfygCK+PX7+wBGe4Wcwvb9/8/W3ZSNlnGQxrish/3///D5/YKDg/n9/v39/3R1dWuOk4N7f9fZ6s7X58bT6P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAACIALAAAAAAQABAAAAZ/QJFwSCwWAcikEkkEFJ7QKKBZaFgplIyHU5gOAYaweOwVWgTotNpCPAgC8Hj80BY0IviKYh+gD90BEgQScn11HwQMIHp7C35CBxiJBBoLlpZ0BEITkyEKHQ+hDwMiDJqTGwiqqwikBBAOEAQXCbW1CLWkIrEOEwO/wMFDDkZGQQA7\') center right no-repeat;", '\
+			<a href="javascript:void(null);" unselectable="on" class="icon template approve" style="">\"I approve\"</a>\
+			<a href="javascript:void(null);" unselectable="on" class="icon template disapprove" style="">\"I disapprove\"</a>\
+		');
+        $('.template.approve').click( function(){ r4p3_sendReply('I approve +1');$('.redactor_dropdown.presets').hide(); });
+        $('.template.disapprove').click( function(){ r4p3_sendReply('I disapprove -1');$('.redactor_dropdown.presets').hide(); });
         $('form[action="account/preferences-save"]').livequery(function(){
             $('.ctrlUnit.submitUnit').before('\
 				<h3 class="sectionHeader">Appearance</h3>\
@@ -339,6 +362,6 @@ r4p3_parsePosts = function(){
                    });
                 });
             });
-        r4p3_likeAll("Bluscream");r4p3_unlikeAll("Supervisor");
+        r4p3_likeAll();r4p3_unlikeAll("Supervisor");
         });
 })();
