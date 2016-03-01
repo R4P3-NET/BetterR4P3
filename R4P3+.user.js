@@ -2,7 +2,7 @@
 // @name R4P3+
 // @description Better R4P3.net
 // @author Bluscream
-// @version 1.4.1
+// @version 1.4.2
 // @encoding utf-8
 // @icon https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/icon.png
 // @homepage https://r4p3.net
@@ -17,6 +17,7 @@
 // @grant unsafeWindow
 // ==/UserScript==
 /*jshint multistr: true */
+//laxcomma
 
 
 //r4p3_addDiscord(invite, href);
@@ -29,7 +30,7 @@ r4p3_addDiscord = function(invite, href) {
 r4p3_addShoutbox = function(src) {
     $('.breadBoxTop').before('<br><div id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></div>');//<div class="noselect" id="refreshshoutbox" class="refreshshoutbox">Refresh Shoutbox</div><
     if (localStorage.getItem("shoutbox") == '0') { $("#shoutbox").hide(); }
-    setInterval(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src'));console.log('[R4P3+] Refreshed Shoutbox'); }, 30000);
+    setInterval(function(){ $('#shoutbox').attr('src', $('#shoutbox').attr('src'));/*console.log('[R4P3+] Refreshed Shoutbox');*/ }, 30000);
     $("#toggleshoutbox").click(function(){ r4p3_checkShoutbox(); });
 };
 //r4p3_checkShoutbox();
@@ -208,9 +209,27 @@ r4p3_showMeALL = function(){
         $(this).attr("title", $(this).attr("name"));
     });
 };
-//r4p3_sendReply(msg);
-r4p3_sendReply = function(msg){
-    $('.redactor_MessageEditor').contents().find('body[contenteditable="true"]').text(msg);
+//r4p3_editReply(msg, purge);
+r4p3_editReply = function(msg, purge){
+    var $form = $('#QuickReply') , ed = XenForo.getEditorInForm($form);
+    if(!ed) { return false; }
+    if(!purge){
+        var oldtxt = "";
+        if(ed.$editor) {
+            oldtxt = ed.$editor.html();
+            ed.$editor.html(oldtxt + "\n" + "\n" + msg);
+            ed.$el.val(''); // The  new line
+        } else {
+            oldtxt = $ed.contents().find('body[contenteditable="true"]').text();
+            ed.val(oldtxt + "\n" + "\n" + msg);
+        }
+        $('.redactor_MessageEditor').contents().find('body[contenteditable="true"]').text(oldtxt + "<br><br>"+msg);
+    }else{
+        $('.redactor_MessageEditor').contents().find('body[contenteditable="true"]').text(msg);
+    }
+};
+//r4p3_sendReply();
+r4p3_sendReply = function(){
     $('input[value="Post Reply"]').submit();
 };
 //r4p3_likeAll(username);
@@ -334,8 +353,11 @@ r4p3_parsePosts = function(){
 			<a href="javascript:void(null);" unselectable="on" class="icon template approve" style="">\"I approve\"</a>\
 			<a href="javascript:void(null);" unselectable="on" class="icon template disapprove" style="">\"I disapprove\"</a>\
 		');
-        $('.template.approve').click( function(){ r4p3_sendReply('I approve +1');$('.redactor_dropdown.presets').hide(); });
-        $('.template.disapprove').click( function(){ r4p3_sendReply('I disapprove -1');$('.redactor_dropdown.presets').hide(); });
+        $('.template.approve').click( function(){ r4p3_editReply('I approve +1');r4p3_sendReply();$('.redactor_dropdown.presets').hide(); });
+        $('.template.disapprove').click( function(){ r4p3_editReply('I disapprove -1');r4p3_sendReply();$('.redactor_dropdown.presets').hide(); });
+        r4p3_addLink('https://forum.teamspeak.com', 'Teamspeak Forum');
+        r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
+        r4p3_addLink('http://ts3index.com/?page=stats&sub=server', 'TS Server Stats');
         $('form[action="account/preferences-save"]').livequery(function(){
             $('.ctrlUnit.submitUnit').before('\
 				<h3 class="sectionHeader">Appearance</h3>\
