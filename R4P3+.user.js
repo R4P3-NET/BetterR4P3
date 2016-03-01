@@ -2,7 +2,7 @@
 // @name R4P3+
 // @description Better R4P3.net
 // @author Bluscream
-// @version 1.4.2
+// @version 1.4.2.1
 // @encoding utf-8
 // @icon https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/icon.png
 // @homepage https://r4p3.net
@@ -112,6 +112,14 @@ r4p3_addNavTAB = function(type, href, text, prepend) {
 	          <a href="'+href+'" class="navLink">'+text+'</a>\
 	          <a href="'+href+'" class="SplitCtrl" rel="Menu"></a>\
    	    </li>');
+    }
+};
+//r4p3_addBlockLINK(type, href, text);
+r4p3_addBlockLINK = function(href, title, prepend) {
+    if (prepend) {
+	    $('.blockLinksList').prepend('<li><a href="'+href+'" rel="nofollow">'+title+'</a></li>');
+    } else {
+	    $('.blockLinksList').append('<li><a href="'+href+'" rel="nofollow">'+title+'</a></li>');
     }
 };
 //r4p3_addinfoBlock(id, type, title, titlehref, titledesc, content, prepend);
@@ -333,6 +341,7 @@ r4p3_parsePosts = function(){
         if (localStorage.getItem("theme") == 1) {
             $('head').append('<link rel="stylesheet" href="https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/css/dark.css" type="text/css" />');
         }
+        if($('.pageContent>.section>a').attr('href') == 'find-new/posts?recent=1'){ window.location.href = "https://r4p3.net/"; }
         r4p3_getTSVersion();
         r4p3_addinfoBlock('versioninfo JSON ver', 'statsList', 'Latest Teamspeak Versions', 'http://teamspeak.com/downloads', 'Check out the latest stable Teamspeak Versions', '\
               <left><span style="text-align:left;">Client: </span><a href="http://www.teamspeak.com/downloads#client" style="float:right"><b id="JSONclientver">Unknown</b></a><br>\
@@ -355,6 +364,7 @@ r4p3_parsePosts = function(){
 		');
         $('.template.approve').click( function(){ r4p3_editReply('I approve +1');r4p3_sendReply();$('.redactor_dropdown.presets').hide(); });
         $('.template.disapprove').click( function(){ r4p3_editReply('I disapprove -1');r4p3_sendReply();$('.redactor_dropdown.presets').hide(); });
+        r4p3_addBlockLINK("https://r4p3.net/find-new/posts?recent=1", "Recent Posts");
         r4p3_addLink('https://forum.teamspeak.com', 'Teamspeak Forum');
         r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
         r4p3_addLink('http://ts3index.com/?page=stats&sub=server', 'TS Server Stats');
