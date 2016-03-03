@@ -282,6 +282,32 @@ r4p3_toggleAllSpoilers = function(){
         $(this).click();
     });
 };
+/*r4p3_startPoll('Do you love it?', ["Yes", "No", "Maybe", "I hate it!"], 'single', 'default', true, true, true, 'default', 'default', 'default', 0);*/
+//r4p3_startPoll(question, answerArray, max_votes_type, max_votes_value, change_vote, public_votes, view_results_unvoted, ctrl_poll_close, close_length, close_units, send);
+r4p3_startPoll = function(question, answerArray, max_votes_type, max_votes_value, change_vote, public_votes, view_results_unvoted, ctrl_poll_close, close_length, close_units, send){
+    $('#ctrl_poll_question').val(question);
+    /* TODO: Parse answerArray*/
+    if(answerArray.length > 2){
+        for (var i = 2; i < answerArray.length; i++) {
+           $('.button.FieldAdder').click();
+        }
+    }
+    for (var ii = 0; ii < answerArray.length; ii++) {
+        var ee = $('input[name="poll[responses][]"]:not(.PollQuestionParsed)').first();
+        ee.val(answerArray[ii]);
+        $(ee).addClass('PollQuestionParsed');
+    }
+    $('.PollQuestionParsed').removeClass('PollQuestionParsed');
+    if(max_votes_type != 'default') { $('input[name="poll[max_votes_type]"][value="'+max_votes_type+'"]').prop('checked', true); }
+    if(max_votes_value != 'default') { $('input[name="poll[max_votes_value]"]').val(max_votes_value); }
+    if(change_vote != 'default') { $('input[name="poll[change_vote]"]').prop('checked', change_vote); }
+    if(public_votes != 'default') { $('input[name="poll[public_votes]"]').prop('checked', public_votes); }
+    if(view_results_unvoted != 'default') { $('input[name="poll[view_results_unvoted]"]').prop('checked', view_results_unvoted); }
+    if(ctrl_poll_close != 'default') { $('#ctrl_poll_close').val(ctrl_poll_close); }
+    if(close_length != 'default') { $('input[name="poll[close_length]"]').val(close_length); }
+    if(close_units != 'default') { $('select[name="poll[close_units]"]').val(close_units); }
+    if(send) { $('.button.primary').click(); }
+};
 //r4p3_parsePosts();
 r4p3_parsePosts = function(){
     var audio = "\
