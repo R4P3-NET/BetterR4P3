@@ -27,6 +27,17 @@ r4p3_addDiscord = function(invite, href) {
     setTimeout(function(){ $('#discordframe').attr('src', $('#discordframe').attr('src')); }, 60000);
 };
 
+//r4p3_addTSBeta();
+r4p3_addTSBeta = function(invite, href) {
+        r4p3_addinfoBlock('membersOnline versioninfo TwitterBeta', 'block', 'Teamspeak Beta', 'https://twitter.com/TeamspeakBETA', 'Twitter Teamspeak BETA Bot', '\
+              <a class="twitter-timeline" href="https://twitter.com/TeamspeakBeta" data-widget-id="705206535950102528">Tweets von @TeamspeakBeta </a>\
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 520px; height: 350px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="preview" data-user-id="4829141752" title="Twitter Timeline"></iframe>\
+              <script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"/>\
+        ');
+        r4p3_addinfoBlock('membersOnline versioninfo TwitterBeta', 'block', 'Teamspeak Beta', 'https://twitter.com/TeamspeakBETA', 'Twitter Teamspeak BETA Bot', '\
+        <iframe id="discordframe" src="https://twitframe.com/show?url=https%3A%2F%2Ftwitter.com%2FTeamspeakBETA%2Fstatus%2F702507575745626113" width="230px" height="400px" frameborder="0"></iframe>');
+};
+
 //r4p3_addShoutbox();
 r4p3_addShoutbox = function(src) {
     $('.breadBoxTop').before('<br><div id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></div>');//<div class="noselect" id="refreshshoutbox" class="refreshshoutbox">Refresh Shoutbox</div><
@@ -348,11 +359,7 @@ r4p3_parsePosts = function(){
               <left><span style="text-align:left;">Client: </span><a href="http://www.teamspeak.com/downloads#client" style="float:right"><b id="JSONclientver">Unknown</b></a><br>\
               <span style="text-align:left;">Server: </span><a href="http://www.teamspeak.com/downloads#server"style="float:right"><b id="JSONserverver">Unknown</b></a>\
         ');
-        /*r4p3_addinfoBlock('membersOnline versioninfo TwitterBeta', 'block', 'Teamspeak Beta', 'https://twitter.com/TeamspeakBETA', 'Twitter Teamspeak BETA Bot', '\
-              <a class="twitter-timeline" href="https://twitter.com/TeamspeakBeta" data-widget-id="705198103507419136">Tweets von @TeamspeakBeta </a>\
-              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 520px; height: 350px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="preview" data-user-id="4829141752" title="Twitter Timeline"></iframe>\
-              <script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"/>\
-        ');*/
+        //r4p3_addTSBeta();
         if (localStorage.getItem("theme") == 1) {
             r4p3_addDiscord("0lNtGnKrr957kozq", "https://discordapp.com/widget?id=136825753957302272&theme=dark");
         } else {
