@@ -416,6 +416,8 @@ r4p3_parsePosts = function(){
         r4p3_addLink('https://forum.teamspeak.com', 'Teamspeak Forum');
         r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
         r4p3_addLink('http://ts3index.com/?page=stats&sub=server', 'TS Server Stats');
+        $('.sidebar').find('h3:contains(Quote)').parent().parent().addClass('dailyQuote');
+        $('.dailyQuote>.secondaryContent>h3').click(function() { $('.dailyQuote').toggle();});
         $('form[action="account/preferences-save"]').livequery(function(){
             $('.ctrlUnit.submitUnit').before('\
 				<h3 class="sectionHeader">Appearance</h3>\
