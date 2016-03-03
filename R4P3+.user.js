@@ -2,7 +2,7 @@
 // @name R4P3+
 // @description Better R4P3.net
 // @author Bluscream
-// @version 1.4.2.2
+// @version 1.4.3
 // @encoding utf-8
 // @icon https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/icon.png
 // @homepage https://r4p3.net
@@ -282,6 +282,55 @@ r4p3_toggleAllSpoilers = function(){
         $(this).click();
     });
 };
+//r4p3_prepareSidebar();
+r4p3_prepareSidebar = function(){
+    $('.sidebar').find('h3:contains(Quote)').parent().parent().addClass('dailyQuote');
+    $('.sidebar>.section').each(function(i,el){
+        $(this).attr('id', 'sidebarItem'+i);
+    });
+    $('.sidebar>.section>.secondaryContent>*:not(h3)').each(function(i,el){
+        $(this).wrapAll('<div class="sidebarItemContent"></div>');
+        $(this).attr('id', 'sidebarItemContent'+i);
+    });
+    $('.sidebar>.section>.secondaryContent>h3').each(function(i,el){
+        $(this).addClass('sidebarItemHeader');
+        $(this).attr('id', 'sidebarItemHeader'+i);
+    });
+};
+//r4p3_makeSideBarItemsToggable();
+r4p3_makeSideBarItemsToggable = function(){
+    $('.sidebarItemHeader').each(function(i,el){
+        var item = $(el).parent().parent().attr('id');
+        $(this).append('<a class="noselect" onclick="r4p3_toggleSidebarItem(\''+item+'\');" style="float:right;">(X)</a>');
+    });
+};
+//r4p3_toggleSidebarItem(id);
+r4p3_toggleSidebarItem = function(id){
+    if($('#'+id).find('.sidebarItemContent').is(":visible")){
+        localStorage.setItem("toggled.sidebarItem."+id, '0');
+    $('#'+id).find('.sidebarItemContent').hide();
+    } else {
+        localStorage.setItem("toggled.sidebarItem."+id, '1');
+        $('#'+id).find('.sidebarItemContent').show();
+    }
+};
+//r4p3_makeForumSectionsToggable();
+r4p3_makeForumSectionsToggable = function(){
+    $('.categoryText>.nodeTitle>a').each(function(i,el){
+        var item = $(el).parent().parent().parent().parent().attr('id');
+        $(this).after('<a class="noselect forumsection'+i+'" onclick="r4p3_toggleForumSection(\''+item+'\');" style="float:right;">(X)</a>');
+        if(localStorage.getItem('toggled.forumNode.'+item) == "0"){ $('li[id="'+item+'"]>.nodeList').hide();}
+    });
+};
+//r4p3_toggleForumSection(id);
+r4p3_toggleForumSection = function(id){
+    if($('li[id="'+id+'"]>.nodeList').is(":visible")){
+        localStorage.setItem("toggled.forumNode."+id, '0');
+    } else {
+        localStorage.setItem("toggled.forumNode."+id, '1');
+    }
+    $('li[id="'+id+'"]>.nodeList').toggle();
+};
 /*r4p3_startPoll('Do you love it?', ["Yes", "No", "Maybe", "I hate it!"], 'single', 'default', true, true, true, 'default', 'default', 'default', 0);*/
 //r4p3_startPoll(question, answerArray, max_votes_type, max_votes_value, change_vote, public_votes, view_results_unvoted, ctrl_poll_close, close_length, close_units, send);
 r4p3_startPoll = function(question, answerArray, max_votes_type, max_votes_value, change_vote, public_votes, view_results_unvoted, ctrl_poll_close, close_length, close_units, send){
@@ -412,12 +461,14 @@ r4p3_parsePosts = function(){
 		');
         $('.template.approve').click( function(){ r4p3_editReply('I approve +1');r4p3_sendReply();$('.redactor_dropdown.presets').hide(); });
         $('.template.disapprove').click( function(){ r4p3_editReply('I disapprove -1');r4p3_sendReply();$('.redactor_dropdown.presets').hide(); });
+        r4p3_prepareSidebar();
+        r4p3_makeSideBarItemsToggable();
+        r4p3_makeForumSectionsToggable();
         //r4p3_addBlockLINK("https://r4p3.net/find-new/posts?recent=1", "Recent Posts");
         r4p3_addLink('https://forum.teamspeak.com', 'Teamspeak Forum');
         r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
         r4p3_addLink('http://ts3index.com/?page=stats&sub=server', 'TS Server Stats');
-        $('.sidebar').find('h3:contains(Quote)').parent().parent().addClass('dailyQuote');
-        $('.dailyQuote>.secondaryContent>h3').click(function() { $('.dailyQuote').toggle();});
+        //$('.dailyQuote>.secondaryContent>h3').click(function() { $('.dailyQuote').toggle();});
         $('form[action="account/preferences-save"]').livequery(function(){
             $('.ctrlUnit.submitUnit').before('\
 				<h3 class="sectionHeader">Appearance</h3>\
