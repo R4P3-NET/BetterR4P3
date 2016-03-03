@@ -2,7 +2,7 @@
 // @name R4P3+
 // @description Better R4P3.net
 // @author Bluscream
-// @version 1.4.2.1
+// @version 1.4.2.2
 // @encoding utf-8
 // @icon https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/icon.png
 // @homepage https://r4p3.net
@@ -381,9 +381,18 @@ r4p3_parsePosts = function(){
         }
         if($('.pageContent>.section>a').attr('href') == 'find-new/posts?recent=1'){ window.location.href = "https://r4p3.net/"; }
         r4p3_getTSVersion();
-        r4p3_addinfoBlock('versioninfo JSON ver', 'statsList', 'Latest Teamspeak Versions', 'http://teamspeak.com/downloads', 'Check out the latest stable Teamspeak Versions', '\
-              <left><span style="text-align:left;">Client: </span><a href="http://www.teamspeak.com/downloads#client" style="float:right"><b id="JSONclientver">Unknown</b></a><br>\
-              <span style="text-align:left;">Server: </span><a href="http://www.teamspeak.com/downloads#server"style="float:right"><b id="JSONserverver">Unknown</b></a>\
+        r4p3_addinfoBlock('versioninfo JSON ver', 'statsList', 'Latest Teamspeak Versions', 'http://teamspeak.com/downloads', 'Check out the latest Teamspeak Versions', '\
+			<table class="tg" width="99%">\
+			  <tr><td class="tg-yw4l"></td>\
+			    <th class="tg-yw4l">Beta</th>\
+			    <th class="tg-yw4l">Stable</th></tr>\
+			  <tr><th class="tg-yw4l">Client</th>\
+			    <td class="tg-zq96"><a href="http://dl.4players.de/ts/releases/pre_releases/client/" target="_blank" id="JSONclientverBETA">Unknown</a></td>\
+			    <td class="tg-1rg7"><a href="http://www.teamspeak.com/downloads#client" target="_blank" id="JSONclientver">Unknown</a></td></tr>\
+			  <tr><th class="tg-yw4l">Server</th>\
+			    <td class="tg-4oyi"><a href="http://dl.4players.de/ts/releases/pre_releases/server/" target="_blank" id="JSONserververBETA">Unknown</a></td>\
+			    <td class="tg-cgn1"><a href="http://www.teamspeak.com/downloads#server" target="_blank" id="JSONserverver">Unknown</a></td></tr>\
+			</table>\
         ');
         //r4p3_addTSBeta();
         if (localStorage.getItem("theme") == 1) {
