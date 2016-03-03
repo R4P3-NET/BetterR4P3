@@ -26,6 +26,7 @@ r4p3_addDiscord = function(invite, href) {
     r4p3_addinfoBlock('membersOnline versioninfo Discord', 'block', 'Discord', 'https://discord.gg/'+invite+'', 'R4P3 Discord Server', '<iframe id="discordframe" src="'+href+'" width="230px" height="500px" frameborder="0"></iframe>');
     setTimeout(function(){ $('#discordframe').attr('src', $('#discordframe').attr('src')); }, 60000);
 };
+
 //r4p3_addShoutbox();
 r4p3_addShoutbox = function(src) {
     $('.breadBoxTop').before('<br><div id="toggleshoutbox" class="noselect">Click to show/hide shoutbox<iframe class="shoutbox" id="shoutbox" WIDTH="100%" HEIGHT="300" title="R4P3 Shoutbox" src="'+src+'" frameborder="0" scrolling="auto"></iframe></div>');//<div class="noselect" id="refreshshoutbox" class="refreshshoutbox">Refresh Shoutbox</div><
@@ -347,6 +348,11 @@ r4p3_parsePosts = function(){
               <left><span style="text-align:left;">Client: </span><a href="http://www.teamspeak.com/downloads#client" style="float:right"><b id="JSONclientver">Unknown</b></a><br>\
               <span style="text-align:left;">Server: </span><a href="http://www.teamspeak.com/downloads#server"style="float:right"><b id="JSONserverver">Unknown</b></a>\
         ');
+        /*r4p3_addinfoBlock('membersOnline versioninfo TwitterBeta', 'block', 'Teamspeak Beta', 'https://twitter.com/TeamspeakBETA', 'Twitter Teamspeak BETA Bot', '\
+              <a class="twitter-timeline" href="https://twitter.com/TeamspeakBeta" data-widget-id="705198103507419136">Tweets von @TeamspeakBeta </a>\
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 520px; height: 350px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="preview" data-user-id="4829141752" title="Twitter Timeline"></iframe>\
+              <script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"/>\
+        ');*/
         if (localStorage.getItem("theme") == 1) {
             r4p3_addDiscord("0lNtGnKrr957kozq", "https://discordapp.com/widget?id=136825753957302272&theme=dark");
         } else {
@@ -364,7 +370,7 @@ r4p3_parsePosts = function(){
 		');
         $('.template.approve').click( function(){ r4p3_editReply('I approve +1');r4p3_sendReply();$('.redactor_dropdown.presets').hide(); });
         $('.template.disapprove').click( function(){ r4p3_editReply('I disapprove -1');r4p3_sendReply();$('.redactor_dropdown.presets').hide(); });
-        r4p3_addBlockLINK("https://r4p3.net/find-new/posts?recent=1", "Recent Posts");
+        //r4p3_addBlockLINK("https://r4p3.net/find-new/posts?recent=1", "Recent Posts");
         r4p3_addLink('https://forum.teamspeak.com', 'Teamspeak Forum');
         r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
         r4p3_addLink('http://ts3index.com/?page=stats&sub=server', 'TS Server Stats');
