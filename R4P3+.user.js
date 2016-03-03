@@ -2,7 +2,7 @@
 // @name R4P3+
 // @description Better R4P3.net
 // @author Bluscream
-// @version 1.4.3
+// @version 1.4.2.2
 // @encoding utf-8
 // @icon https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/icon.png
 // @homepage https://r4p3.net
@@ -436,11 +436,11 @@ r4p3_parsePosts = function(){
 			    <th class="tg-yw4l">Beta</th>\
 			    <th class="tg-yw4l">Stable</th></tr>\
 			  <tr><th class="tg-yw4l">Client</th>\
-			    <td class="tg-zq96"><a href="http://dl.4players.de/ts/releases/pre_releases/client/" target="_blank" id="JSONclientverBETA">Unknown</a></td>\
-			    <td class="tg-1rg7"><a href="http://www.teamspeak.com/downloads#client" target="_blank" id="JSONclientver">Unknown</a></td></tr>\
+			    <td class="tg-zq96"><a href="http://dl.4players.de/ts/releases/pre_releases/client/" target="_blank" id="JSONclientverBETA"><font color="gray">N/A</font></a></td>\
+			    <td class="tg-1rg7"><a href="http://www.teamspeak.com/downloads#client" target="_blank" id="JSONclientver"><font color="gray">N/A</font></a></td></tr>\
 			  <tr><th class="tg-yw4l">Server</th>\
-			    <td class="tg-4oyi"><a href="http://dl.4players.de/ts/releases/pre_releases/server/" target="_blank" id="JSONserververBETA">Unknown</a></td>\
-			    <td class="tg-cgn1"><a href="http://www.teamspeak.com/downloads#server" target="_blank" id="JSONserverver">Unknown</a></td></tr>\
+			    <td class="tg-4oyi"><a href="http://dl.4players.de/ts/releases/pre_releases/server/" target="_blank" id="JSONserververBETA"><font color="gray">N/A</font></a></td>\
+			    <td class="tg-cgn1"><a href="http://www.teamspeak.com/downloads#server" target="_blank" id="JSONserverver"><font color="gray">N/A</font></a></td></tr>\
 			</table>\
         ');
         //r4p3_addTSBeta();
