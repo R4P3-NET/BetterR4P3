@@ -560,3 +560,10 @@ a[href="account/following"],a[href="members/"],
 span[style*="Transparent"], span[style*="transparent"], span[style*="TRANSPARENT"] {
 	background: #000000; color: #0EA0CC !important;
 }
+
+font[color="blue"]{ color: blue !important; }
+font[color="#094D6F"]{ color: #094D6F!important; }
+font[color="gray"]{ color: gray !important; }
+
+.tg,th,td,tbody { background:transparent !important; }
+th{ color: lightgrey !important; }
