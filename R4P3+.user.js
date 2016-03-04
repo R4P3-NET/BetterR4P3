@@ -1,23 +1,24 @@
 // ==UserScript==
 // @name R4P3+
 // @description Better R4P3.net
-// @author Bluscream
 // @version 1.4.2.2
-// @encoding utf-8
+// @include https://r4p3.net/*
 // @icon https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/icon.png
-// @homepage https://r4p3.net
-// @contactURL https://r4p3.net/members/bluscream.53/
 // @supportURL https://github.com/R4P3-NET/BetterR4P3/issues/new
 // @contributionURL https://github.com/R4P3-NET/BetterR4P3/compare
 // @updateURL https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/R4P3%2B.user.js
 // @downloadURL https://github.com/R4P3-NET/BetterR4P3/raw/master/R4P3%2B.user.js
 // @require https://cdn.rawgit.com/brandonaaron/livequery/master/jquery.livequery.min.js
 // @require https://cdn.rawgit.com/ali-saleem/anchorme.js/gh-pages/src/anchorme.min.js
-// @include https://r4p3.net/*
-// @grant unsafeWindow
+// @contactURL https://r4p3.net/members/bluscream.53/
+// @twitterURL https://twitter.com/R4P3_NET
+// @homepage https://r4p3.net
+// @author Bluscream
+// @encoding utf-8
 // ==/UserScript==
 /*jshint multistr: true */
 //laxcomma
+//allow pasting
 
 
 //r4p3_addDiscord(invite, href);
