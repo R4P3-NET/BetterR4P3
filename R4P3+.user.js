@@ -10,7 +10,7 @@
 // @downloadURL https://github.com/R4P3-NET/BetterR4P3/raw/master/R4P3%2B.user.js
 // @require https://code.jquery.com/jquery-2.2.1.min.js
 // @require https://code.jquery.com/ui/1.11.4/jquery-ui.min.js
-// @require https://cdn.rawgit.com/brandonaaron/livequery/master/jquery.livequery.min.js
+// @require https://cdn.rawgit.com/brandonaaron/livequery/1.1.1/jquery.livequery.js
 // @require https://cdn.rawgit.com/ali-saleem/anchorme.js/gh-pages/src/anchorme.min.js
 // @contactURL https://r4p3.net/members/bluscream.53/
 // @twitterURL https://twitter.com/R4P3_NET
