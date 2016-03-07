@@ -111,24 +111,9 @@ r4p3_addLink = function(href, title, prepend) {
         $('a[href="https://shop.spreadshirt.com/r4p3/"]').parent().parent().append('<li class="addedLink"><a href="'+href+'" target="_blank">'+title+'</a></li>');
     }
 };
-//r4p3_addNavTAB(type, href, text);
-r4p3_addNavTAB = function(type, href, text, prepend) {
-    if (prepend) {
-	    $('.publicTabs').prepend('\
-	       <li class="navTab '+type+' Popup PopupControl PopupContainerControl PopupOpen">\
-	          <a href="'+href+'" class="textLogo"></a>\
-	          <a href="'+href+'" class="navLink">'+text+'</a>\
-	          <a href="'+href+'" class="SplitCtrl" rel="Menu"></a>\
-   	    </li>');
-    } else {
-	    $('.publicTabs').append('\
-	       <li class="navTab '+type+' Popup PopupControl PopupContainerControl PopupOpen">\
-	          <a href="'+href+'" class="textLogo"></a>\
-	          <a href="'+href+'" class="navLink">'+text+'</a>\
-	          <a href="'+href+'" class="SplitCtrl" rel="Menu"></a>\
-   	    </li>');
-    }
-};
+
+//here_here
+
 //r4p3_addBlockLINK(type, href, text);
 r4p3_addBlockLINK = function(href, title, prepend) {
     if (prepend) {
@@ -423,6 +408,38 @@ r4p3_parsePosts = function(){
     //$('body[contenteditable="true"]').val();
 };
 
+
+//r4p3_addNavTAB(type, href, text);
+r4p3_addNavTAB = function(type, href, text, prepend) {
+    if (prepend) {
+	    $('.publicTabs').prepend('\
+	       <li class="navTab '+type+' navTab members Popup PopupControl PopupClosed PopupContainerControl added">\
+	          <a href="'+href+'" class="textLogo"></a>\
+	          <a href="'+href+'" class="navLink">'+text+'</a>\
+	          <a href="'+href+'" class="SplitCtrl" rel="Menu"></a>\
+   	    </li>');
+    } else {
+	    $('.publicTabs').append('\
+	       <li class="navTab '+type+' navTab members Popup PopupControl PopupClosed PopupContainerControl added">\
+	          <a href="'+href+'" class="textLogo added"></a>\
+	          <a href="'+href+'" class="navLink added">'+text+'</a>\
+	          <a href="'+href+'" class="SplitCtrl added" rel="Menu"></a>\
+   	    </li>');
+    }
+};
+
+r4p3_addNavMenu = function(i, items) {
+  $('body').append('\
+    <div class="Menu JsOnly tabMenu membersTabLinks" id="XenForoUniq'+i+'" style="display: none; visibility: visible; left: 193.75px; top: 137.068px;">\
+        <ul class="secondaryContent blockLinksList"></ul>\
+    </div>\
+  ');
+  $.each(items, function(index, item) {
+      var iitems = item.split(';');
+      $('#XenForoUniq'+i+'>.blockLinksList').append('<li class="addedLink"><a href="'+iitems[1]+'" target="_blank">'+iitems[2]+'</a></li>');
+  });
+};
+
 (function() {
     'use strict';
     //if([window.location.href].startsWith("https://")) { window.location.href = [window.location.href].replace("https://", "http://"); }
@@ -469,7 +486,8 @@ r4p3_parsePosts = function(){
         r4p3_makeForumSectionsToggable();
         //r4p3_addBlockLINK("https://r4p3.net/find-new/posts?recent=1", "Recent Posts");
         r4p3_addLink('https://forum.teamspeak.com', 'Teamspeak Forum');
-        r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
+        r4p3_addNavTAB('members', '#t', 'TS Server Lists');
+        //r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
         r4p3_addLink('http://ts3index.com/?page=stats&sub=server', 'TS Server Stats');
         //$('.dailyQuote>.secondaryContent>h3').click(function() { $('.dailyQuote').toggle();});
         $('form[action="account/preferences-save"]').livequery(function(){
