@@ -450,6 +450,7 @@ r4p3_versionsPopup = function(){
             $('head').append('<link rel="stylesheet" href="https://cdn.rawgit.com/R4P3-NET/BetterR4P3/master/css/dark.css" type="text/css" />');
         }
         if($('.pageContent>.section>a').attr('href') == 'find-new/posts?recent=1'){ window.location.href = "https://r4p3.net/"; }
+        if($('.pageContent>.titleBar').next().text() == 'The moderation queue is currently empty.'){ window.location.href = "https://r4p3.net/"; }
         r4p3_getTSVersion();
         r4p3_addinfoBlock('versioninfo JSON ver', 'statsList', 'Latest Teamspeak Versions', 'http://teamspeak.com/downloads', 'Check out the latest Teamspeak Versions', '\
 			<center><table class="tg" width="90px" style="max-width:90px !important;">\
