@@ -409,35 +409,26 @@ r4p3_parsePosts = function(){
 };
 
 
-//r4p3_addNavTAB(type, href, text);
-r4p3_addNavTAB = function(type, href, text, prepend) {
-    if (prepend) {
-	    $('.publicTabs').prepend('\
-	       <li class="navTab '+type+' navTab members Popup PopupControl PopupClosed PopupContainerControl added">\
-	          <a href="'+href+'" class="textLogo"></a>\
-	          <a href="'+href+'" class="navLink">'+text+'</a>\
-	          <a href="'+href+'" class="SplitCtrl" rel="Menu"></a>\
-   	    </li>');
-    } else {
-	    $('.publicTabs').append('\
-	       <li class="navTab '+type+' navTab members Popup PopupControl PopupClosed PopupContainerControl added">\
-	          <a href="'+href+'" class="textLogo added"></a>\
-	          <a href="'+href+'" class="navLink added">'+text+'</a>\
-	          <a href="'+href+'" class="SplitCtrl added" rel="Menu"></a>\
-   	    </li>');
+//r4p3_addNavTAB(type, href, text, items);
+r4p3_addNavTAB = function(clas, id, href, text, items) {
+    $('.publicTabs').append('\
+		<li class="navTab '+clas+' navTab members Popup PopupControl PopupClosed PopupContainerControl added" id="'+id+'">\
+		<a href="'+href+'" class="textLogo added"></a>\
+		<a href="'+href+'" class="navLink added">'+text+'</a>\
+		<a href="'+href+'" class="SplitCtrl added" rel="Menu"></a>\
+	</li>');
+    if(items){
+        $('#'+id+'>.SplitCtrl').attr('onclick', '$("#menu'+id+'").toggle();');
+        $('#'+id+'>.SplitCtrl').after('\
+		    <div class="Menu JsOnly tabMenu membersTabLinks" id="menu'+id+'" style="display:none;visibility:visible;top:100% !important;z-index:9999 !important;>\
+		       <ul class="secondaryContent blockLinksList"></ul>\
+		    </div>\
+	    ');
+	    $.each(items, function(index, item) {
+		    var iitems = item.split(';');
+		    $('#menu'+id+'>.blockLinksList').append('<li class="addedLink"><a href="'+iitems[0]+'" target="_blank">'+iitems[1]+'</a></li>');
+	    });
     }
-};
-
-r4p3_addNavMenu = function(i, items) {
-  $('body').append('\
-    <div class="Menu JsOnly tabMenu membersTabLinks" id="XenForoUniq'+i+'" style="display: none; visibility: visible; left: 193.75px; top: 137.068px;">\
-        <ul class="secondaryContent blockLinksList"></ul>\
-    </div>\
-  ');
-  $.each(items, function(index, item) {
-      var iitems = item.split(';');
-      $('#XenForoUniq'+i+'>.blockLinksList').append('<li class="addedLink"><a href="'+iitems[1]+'" target="_blank">'+iitems[2]+'</a></li>');
-  });
 };
 
 (function() {
@@ -451,17 +442,20 @@ r4p3_addNavMenu = function(i, items) {
         if($('.pageContent>.section>a').attr('href') == 'find-new/posts?recent=1'){ window.location.href = "https://r4p3.net/"; }
         r4p3_getTSVersion();
         r4p3_addinfoBlock('versioninfo JSON ver', 'statsList', 'Latest Teamspeak Versions', 'http://teamspeak.com/downloads', 'Check out the latest Teamspeak Versions', '\
-			<table class="tg" width="99%">\
+			<center><table class="tg" width="90px" style="max-width:90px !important;">\
 			  <tr><td class="tg-yw4l"></td>\
+			    <th class="tg-yw4l">Alpha</th>\
 			    <th class="tg-yw4l">Beta</th>\
 			    <th class="tg-yw4l">Stable</th></tr>\
 			  <tr><th class="tg-yw4l">Client</th>\
-			    <td class="tg-zq96"><a href="http://dl.4players.de/ts/releases/pre_releases/client/" target="_blank" id="JSONclientverBETA"><font color="gray">N/A</font></a></td>\
+			    <td class="tg-zq95"><font id="JSONclientverALPHA" color="gray">N/A</font></td>\
+			    <td class="tg-zq96"><a href="http://dl.4players.de/ts/releases/pre_releases/client/?C=N;O=D" target="_blank" id="JSONclientverBETA"><font color="gray">N/A</font></a></td>\
 			    <td class="tg-1rg7"><a href="http://www.teamspeak.com/downloads#client" target="_blank" id="JSONclientver"><font color="gray">N/A</font></a></td></tr>\
 			  <tr><th class="tg-yw4l">Server</th>\
-			    <td class="tg-4oyi"><a href="http://dl.4players.de/ts/releases/pre_releases/server/" target="_blank" id="JSONserververBETA"><font color="gray">N/A</font></a></td>\
+			    <td class="tg-zq93"><font id="JSONclientverALPHA" color="gray">N/A</font></td>\
+			    <td class="tg-4oyi"><a href="http://dl.4players.de/ts/releases/pre_releases/server/?C=N;O=D" target="_blank" id="JSONserververBETA"><font color="gray">N/A</font></a></td>\
 			    <td class="tg-cgn1"><a href="http://www.teamspeak.com/downloads#server" target="_blank" id="JSONserverver"><font color="gray">N/A</font></a></td></tr>\
-			</table>\
+			</table></center>\
         ');
         //r4p3_addTSBeta();
         if (localStorage.getItem("theme") == 1) {
@@ -470,7 +464,7 @@ r4p3_addNavMenu = function(i, items) {
             r4p3_addDiscord("0lNtGnKrr957kozq", "https://discordapp.com/widget?id=136825753957302272&theme=light");
         }
         r4p3_addShoutbox('https://www.freeshoutbox.net/bluscream&');
-        r4p3_changeUserTitle('Bluscream', 'BOSS');r4p3_changeUserTitle('Supervisor', 'Co-Admin');
+        r4p3_changeUserTitle('Bluscream', 'Administrator');r4p3_changeUserTitle('Supervisor', 'Co-Admin');
         r4p3_addBanner('Bluscream', 'Blue', 'Bluscream');r4p3_reorderStaffMember('Asphyxia', true);r4p3_reorderStaffMember('Bluscream', true);
         r4p3_delBanner('Supervisor', 'Orange');r4p3_addBanner('Supervisor', 'Orange', 'Restricted', true);r4p3_reorderStaffMember('Supervisor');
         r4p3_parsePosts();
@@ -486,8 +480,14 @@ r4p3_addNavMenu = function(i, items) {
         r4p3_makeForumSectionsToggable();
         //r4p3_addBlockLINK("https://r4p3.net/find-new/posts?recent=1", "Recent Posts");
         r4p3_addLink('https://forum.teamspeak.com', 'Teamspeak Forum');
-        r4p3_addNavTAB('members', '#t', 'TS Server Lists');
-        //r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
+        r4p3_addLink('https://www.teamspeak-connection.de', 'German Forum');
+        /*r4p3_addNavTAB('members', 'TServerLists', '#', 'TS Server Lists', [
+            "https://www.planetteamspeak.com/serverlist/result;PlanetTeamspeak",
+            "https://www.tsviewer.com/index.php?page=list&category=show_all&ts=3&listtype=version&sort=&by=&users=hide_empty&country=show_all&category=show_all&type=public;TSViewer",
+            "https://ts3index.com/?page=serverlist&sort=clientsonline&desc=0;TS3Index",
+            "https://www.gametracker.com/search/ts3/?&searchipp=50&sort=3&order=DESC;GameTracker"
+        ]);*/
+        r4p3_addLink('https://www.planetteamspeak.com/serverlist/result', 'TS Server List');
         r4p3_addLink('http://ts3index.com/?page=stats&sub=server', 'TS Server Stats');
         //$('.dailyQuote>.secondaryContent>h3').click(function() { $('.dailyQuote').toggle();});
         $('form[action="account/preferences-save"]').livequery(function(){
