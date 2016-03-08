@@ -431,6 +431,16 @@ r4p3_addNavTAB = function(clas, id, href, text, items) {
     }
 };
 
+//r4p3_versionsTable();
+r4p3_versionsTable = function(types, channels){
+
+};
+
+//r4p3_versionsPopup();
+r4p3_versionsPopup = function(){
+
+};
+
 (function() {
     'use strict';
     //if([window.location.href].startsWith("https://")) { window.location.href = [window.location.href].replace("https://", "http://"); }
